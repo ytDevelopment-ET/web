@@ -2,10 +2,18 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
+const { Telegraf } = require('telegraf');
+const bot = new Telegraf(process.env.BOT_TOKEN || "5929251166:AAFXJNoSI-2SkzVSIcUhk6L4srAendwTPtY");
+bot.command('oldschool', (ctx) => ctx.reply('Hello'));
+bot.command('hipster', Telegraf.reply('λ'));
+bot.launch();
+// Enable graceful stop
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
+
 app.get("/", (req, res) => res.type('html').send(html));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
 
 const html = `
 <!DOCTYPE html>
