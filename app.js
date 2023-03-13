@@ -4,8 +4,9 @@ const port = process.env.PORT || 3001;
 
 const { Telegraf } = require('telegraf');
 const bot = new Telegraf(process.env.BOT_TOKEN || "5929251166:AAFXJNoSI-2SkzVSIcUhk6L4srAendwTPtY");
-bot.command('oldschool', (ctx) => ctx.reply('Hello'));
-bot.command('weather', Telegraf.reply('λ'));
+bot.command('start', (ctx) => ctx.reply('Hello'));
+bot.command('weather', Telegraf.reply('It is 25℃ now.'));
+bot.command('debug', (ctx) => ctx.reply(JSON.stringify(ctx)));
 bot.launch();
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
