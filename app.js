@@ -7,7 +7,10 @@ const chat_id = 1193690309
 const { Telegraf } = require('telegraf');
 const bot = new Telegraf(process.env.BOT_TOKEN || "5929251166:AAFXJNoSI-2SkzVSIcUhk6L4srAendwTPtY");
 bot.command('start', (ctx) => {
-  ctx.reply(`Hello, Please wait...`)
+  ctx.reply(`Hello, Please...`)
+  
+  setTimeout(() => ctx.reply(`Be patient`), 5000)
+  
   bot.telegram.getChat(chat_id)
     .then(chat => ctx.reply(chat))
     .catch(err => ctx.reply(err));
