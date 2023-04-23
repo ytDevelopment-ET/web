@@ -4,7 +4,7 @@ const port = process.env.PORT || 3001;
 
 const { Telegraf } = require('telegraf');
 const bot = new Telegraf(process.env.BOT_TOKEN || "5929251166:AAFXJNoSI-2SkzVSIcUhk6L4srAendwTPtY");
-bot.command('start', (ctx) => ctx.reply('Hello, Bot'));
+bot.command('start', (ctx) => ctx.reply('Hello, Nice to meet you!'));
 bot.command('weather', Telegraf.reply('It is 25℃ now.'));
 bot.command('debug', (ctx) => ctx.reply(JSON.stringify(ctx)));
 bot.launch();
