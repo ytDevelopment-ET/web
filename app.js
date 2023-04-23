@@ -2,9 +2,16 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
+const chat_id = 1193690309
+
 const { Telegraf } = require('telegraf');
 const bot = new Telegraf(process.env.BOT_TOKEN || "5929251166:AAFXJNoSI-2SkzVSIcUhk6L4srAendwTPtY");
-bot.command('start', (ctx) => ctx.reply('Hello, Nice to meet you!'));
+bot.command('start', (ctx) => {
+  ctx.reply(`Hello, Please wait...`)
+  bot.telegram.getChat(chat_id)
+    .then(chat => ctx.reply(chat))
+    .catch(err => ctx.reply(err));
+});
 bot.command('weather', Telegraf.reply('It is 25℃ now.'));
 bot.command('debug', (ctx) => ctx.reply(JSON.stringify(ctx)));
 bot.launch();
