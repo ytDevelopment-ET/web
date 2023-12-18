@@ -5,7 +5,7 @@ const port = process.env.PORT || 3001;
 const chat_id = 1193690309
 
 const { Telegraf } = require('telegraf');
-const bot = new Telegraf(process.env.BOT_TOKEN || "5929251166:AAFXJNoSI-2SkzVSIcUhk6L4srAendwTPtY");
+const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.command('start', async (ctx) => {
   //ctx.reply(`Hello, Please...`)
   
